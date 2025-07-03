@@ -29,4 +29,4 @@ public class Categoria implements Serializable {
         this.activo = activo;
     }
 }
- 
+
