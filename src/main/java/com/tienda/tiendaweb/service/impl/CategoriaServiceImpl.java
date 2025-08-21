@@ -1,6 +1,5 @@
 package com.tienda.tiendaweb.service.impl;
 
-
 import com.tienda.tiendaweb.dao.CategoriaDao;
 import com.tienda.tiendaweb.domain.Categoria;
 import com.tienda.tiendaweb.service.CategoriaService;
@@ -24,5 +23,24 @@ public class CategoriaServiceImpl implements CategoriaService {
         }
         return lista;
     }
+    
+    @Override
+    @Transactional(readOnly = true)
+    public Categoria getCategoria(Categoria categoria) {
+        return categoriaDao.findById(categoria.getIdCategoria()).orElse(null);
+    }
+
+    @Override
+    @Transactional
+    public void save(Categoria categoria) {
+        categoriaDao.save(categoria);
+    }
+
+    @Override
+    @Transactional
+    public void delete(Categoria categoria) {
+        categoriaDao.delete(categoria);
+    }
+    
 }
  

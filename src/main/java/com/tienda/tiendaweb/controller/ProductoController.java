@@ -5,11 +5,10 @@
 package com.tienda.tiendaweb.controller;
 
 
-
 import com.tienda.tiendaweb.domain.Producto;
 import com.tienda.tiendaweb.service.CategoriaService;
 import com.tienda.tiendaweb.service.ProductoService;
-//import com.tienda.tiendaweb.service.impl.FirebaseStorageServiceImpl;
+import com.tienda.tiendaweb.service.impl.FireBaseStorageServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -46,19 +45,19 @@ public class ProductoController {
     }
 
     @Autowired
-  //  private FirebaseStorageServiceImpl firebaseStorageService;
+    private FireBaseStorageServiceImpl firebaseStorageService;
     
     @PostMapping("/guardar")
     public String productoGuardar(Producto producto,
             @RequestParam("imagenFile") MultipartFile imagenFile) {        
-       /* if (!imagenFile.isEmpty()) {
+        if (!imagenFile.isEmpty()) {
             productoService.save(producto);
             producto.setRutaImagen(
                     firebaseStorageService.cargaImagen(
                             imagenFile, 
                             "producto", 
                             producto.getIdProducto()));
-        }*/
+        }
         productoService.save(producto);
         return "redirect:/producto/listado";
     }
